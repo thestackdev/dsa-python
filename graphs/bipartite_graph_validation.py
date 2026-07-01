@@ -1,7 +1,7 @@
 from typing import List
 
 
-class Solution:
+class Soution:
     def __init__(self) -> None:
         pass
 
@@ -9,20 +9,22 @@ class Solution:
         colors = [0] * len(graph)
 
         for i in range(len(graph)):
-            if colors[i] == 0 and not self.dfs(i, 1, colors, graph):
+            if colors[i] == 0 and not self.dfs(i, 1, graph, colors):
                 return False
 
         return True
 
-    def dfs(self, node: int, color: int, colors: List[int], graph: List[List[int]]):
-        colors[node] = color
+    def dfs(
+        self, current_index: int, color: int, graph: List[List[int]], colors: List[int]
+    ) -> bool:
+        colors[current_index] = color
 
-        for neighbour in graph[node]:
+        for neighbour in graph[current_index]:
             if colors[neighbour] == color:
                 return False
 
             if colors[neighbour] == 0 and not self.dfs(
-                neighbour, -color, colors, graph
+                neighbour, -color, graph, colors
             ):
                 return False
 

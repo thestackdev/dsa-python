@@ -33,7 +33,7 @@ class Solution:
         dirs = ([-1, 0], [0, 1], [-1, 0], [1, 0])
 
         for dir in dirs:
-            next_row, next_col = row + dir[0], row + dir[1]
+            next_row, next_col = row + dir[0], col + dir[1]
 
             if (
                 self.is_within_bounds(next_row, next_col, board)
